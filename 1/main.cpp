@@ -39,7 +39,7 @@ struct Test2 {
 void testAll() {
     std::cout << "Test 1: " << Test1::result << std::endl;
     std::cout << "Test 2 Sanity: " << Test2::sanity << std::endl;
-    std::cout << "Test 2: " << Test2::result_3 << std::endl;
+    std::cout << "Test 2: " << Test2::result << std::endl;
     // ...
 }
 
