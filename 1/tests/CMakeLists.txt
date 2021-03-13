@@ -6,11 +6,11 @@ find_package(GTest REQUIRED)
 
 file(GLOB_RECURSE SOURCES . src/*.cpp)
 
-add_executable(Test ${SOURCES})
+add_executable(test ${SOURCES})
 
-target_include_directories(Test PUBLIC "..")
-target_include_directories(Test PUBLIC "./include")
+target_include_directories(test PUBLIC "..")
+target_include_directories(test PUBLIC "./include")
 
-target_link_libraries(Test PUBLIC GTest::GTest GTest::Main)
+target_link_libraries(test PUBLIC GTest::GTest GTest::Main)
 
-add_test(CommonTestsAll Test)
+add_test(CommonTestsAll test)
