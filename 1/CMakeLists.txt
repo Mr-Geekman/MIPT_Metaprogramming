@@ -3,4 +3,4 @@ project(1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(1 main.cpp typelist.hpp)
+add_executable(1 main.cpp typelist_old.hpp typelist.hpp)
