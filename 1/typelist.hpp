@@ -1,5 +1,5 @@
-#ifndef INC_1_TYPELIST_HPP
-#define INC_1_TYPELIST_HPP
+#ifndef TYPELIST_HPP
+#define TYPELIST_HPP
 
 // Определение списка типов
 class NullType{};
@@ -50,4 +50,4 @@ struct Erase<TypeList<T, Tail>, T> {
 };
 
 
-#endif //INC_1_TYPELIST_HPP
+#endif //TYPELIST_HPP
