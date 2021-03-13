@@ -8,6 +8,7 @@ file(GLOB_RECURSE SOURCES . src/*.cpp)
 
 add_executable(Test ${SOURCES})
 
+target_include_directories(Test PUBLIC "..")
 target_include_directories(Test PUBLIC "./include")
 
 target_link_libraries(Test PUBLIC GTest::GTest GTest::Main)
