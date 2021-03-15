@@ -22,7 +22,6 @@ struct TypeListBuilder<T, Ts...> {
 };
 
 // Индексирование списка типов
-
 template <class TList, unsigned int i>
 struct TypeAt {
     using Result = typename TypeAt<typename TList::Tail, i-1>::Result;
