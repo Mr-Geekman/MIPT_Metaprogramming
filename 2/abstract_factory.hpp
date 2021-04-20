@@ -9,7 +9,7 @@
 template<class T>
 class IFactoryUnit {
 public:
-    virtual T* create(Type2Type<T>) = 0;
+    virtual T* create(IdentityType<T>) = 0;
     virtual ~IFactoryUnit() {}
 };
 
@@ -20,7 +20,7 @@ public:
     using InnerList = TList;
     template<class T> T* create() {
         Unit<T>& unit = *this;
-        return unit.create(Type2Type<T>());
+        return unit.create(IdentityType<T>());
     }
 };
 
@@ -31,7 +31,7 @@ public:
     using BaseInnerList = typename Base::InnerList;
     using InnerList = typename BaseInnerList::Tail;
     using Product = typename BaseInnerList::Head;
-    ConcreteProduct* create(Type2Type<Product>) {
+    ConcreteProduct* create(IdentityType<Product>) {
         return new ConcreteProduct;
     }
 };

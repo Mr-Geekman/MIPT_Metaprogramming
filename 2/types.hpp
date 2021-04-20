@@ -2,7 +2,7 @@
 #define TYPES_HPP
 
 template <typename T>
-struct Type2Type {
+struct IdentityType {
     typedef T Type;
 };
 
