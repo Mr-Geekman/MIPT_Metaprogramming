@@ -6,41 +6,41 @@
 #include "hierarchy.hpp"
 
 // элемент абстрактной фабрики
-template<class T>
+template <class T>
 class IFactoryUnit {
 public:
-    virtual T* create(IdentityType<T>) = 0;
+    virtual T* create(TypeHolder<T>) = 0;
     virtual ~IFactoryUnit() {}
 };
 
 // абстрактная фабрика
-template<class TList, template<class> class Unit = IFactoryUnit>
+template <class TList, template <class> class Unit = IFactoryUnit>
 class IFactory: public GenScatterHierarchy<TList, Unit> {
 public:
     using InnerList = TList;
-    template<class T> T* create() {
+    template <class T> T* create() {
         Unit<T>& unit = *this;
-        return unit.create(IdentityType<T>());
+        return unit.create(TypeHolder<T>());
     }
 };
 
 // элемент реализации абстрактной фабрики
-template<class ConcreteProduct, class Base>
+template <class ConcreteProduct, class Base>
 class StandardCreationPolicy: public Base {
 public:
     using BaseInnerList = typename Base::InnerList;
     using InnerList = typename BaseInnerList::Tail;
     using Product = typename BaseInnerList::Head;
-    ConcreteProduct* create(IdentityType<Product>) {
+    ConcreteProduct* create(TypeHolder<Product>) {
         return new ConcreteProduct;
     }
 };
 
 // реализация конкретной фабрики
-template<
+template <
         class AbstractFactory,
         class TList,
-        template<class, class> class CreationPolicy = StandardCreationPolicy
+        template <class, class> class CreationPolicy = StandardCreationPolicy
         >
 class CFactory: public GenLinearHierarchy<typename Reverse<TList>::Result, CreationPolicy, AbstractFactory> {};
 

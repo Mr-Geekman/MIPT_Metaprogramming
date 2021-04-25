@@ -2,5 +2,7 @@
 
 ## Тестирование
 
+В тестах реализован пример с Archer/Infantry/Cavalry.
+
 1. Запустить скрипт `build.sh`.
 2. Выполнить файл `build/tests/test`.
