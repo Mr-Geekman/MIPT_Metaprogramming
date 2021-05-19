@@ -12,7 +12,7 @@ public:
     GeneralHolder(unsigned int x) : longevity(x) {}
     virtual ~GeneralHolder() {};
     static bool const compare_pointers(const GeneralHolder* left_ptr, const GeneralHolder* right_ptr) {
-        return left_ptr->longevity < right_ptr->longevity;
+        return left_ptr->longevity > right_ptr->longevity;
     }
 private:
     unsigned int longevity;
@@ -32,7 +32,7 @@ private:
 };
 
 // Определяем глоабальную очередь для хранения объектов
-extern std::list<GeneralHolder*>* removing_queue;
+std::list<GeneralHolder*>* removing_queue = new std::list<GeneralHolder*>();
 
 // Определяем функцию для обработки удаления объекта
 void at_exit_function() {
@@ -45,7 +45,7 @@ void at_exit_function() {
     // Удаляем очередь если требуется
     if(removing_queue->empty()) {
         delete removing_queue;
-        removing_queue = 0;
+        removing_queue = nullptr;
     }
 }
 
